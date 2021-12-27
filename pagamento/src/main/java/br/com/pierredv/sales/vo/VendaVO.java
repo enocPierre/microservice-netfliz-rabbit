@@ -11,7 +11,6 @@ import org.springframework.hateoas.RepresentationModel;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
-import br.com.pierredv.sales.entity.ProdutoVenda;
 import br.com.pierredv.sales.entity.Venda;
 
 @JsonPropertyOrder({"id", "data", "produtos", "valorTotal"})
@@ -26,7 +25,7 @@ public class VendaVO extends RepresentationModel<VendaVO> implements Serializabl
 	private Date data;
 	
 	@JsonProperty("produtos")
-	private List<ProdutoVenda> produtos;
+	private List<ProdutoVendaVO> produtos;
 	
 	@JsonProperty("valorTotal")
 	private Double valorTotal;
@@ -35,14 +34,14 @@ public class VendaVO extends RepresentationModel<VendaVO> implements Serializabl
 		
 	}
 	
-	public VendaVO(Long id, Date data, List<ProdutoVenda> produtos, Double valorTotal) {
+	public VendaVO(Long id, Date data, List<ProdutoVendaVO> produtos, Double valorTotal) {
 		super();
 		this.id = id;
 		this.data = data;
 		this.produtos = produtos;
 		this.valorTotal = valorTotal;
 	}
-	
+
 	public Long getId() {
 		return id;
 	}
@@ -59,11 +58,11 @@ public class VendaVO extends RepresentationModel<VendaVO> implements Serializabl
 		this.data = data;
 	}
 
-	public List<ProdutoVenda> getProdutos() {
+	public List<ProdutoVendaVO> getProdutos() {
 		return produtos;
 	}
 
-	public void setProdutos(List<ProdutoVenda> produtos) {
+	public void setProdutos(List<ProdutoVendaVO> produtos) {
 		this.produtos = produtos;
 	}
 
@@ -75,14 +74,11 @@ public class VendaVO extends RepresentationModel<VendaVO> implements Serializabl
 		this.valorTotal = valorTotal;
 	}
 	
-
 	@Override
 	public String toString() {
 		return "VendaVO [id=" + id + ", data=" + data + ", produtos=" + produtos + ", valorTotal=" + valorTotal + "]";
 	}
 	
-	
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;

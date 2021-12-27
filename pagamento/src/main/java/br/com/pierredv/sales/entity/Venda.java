@@ -15,8 +15,11 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.format.annotation.DateTimeFormat;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
+import br.com.pierredv.sales.vo.VendaVO;
 
 @JsonPropertyOrder({"id", "data", "valorTotal","venda"})
 @Entity
@@ -116,6 +119,10 @@ public class Venda implements Serializable {
 			return false;
 		Venda other = (Venda) obj;
 		return Objects.equals(id, other.id);
+	}
+	
+	public static Venda create(VendaVO vendaVO) {
+		return new ModelMapper().map(vendaVO, Venda.class);
 	}
 	
 

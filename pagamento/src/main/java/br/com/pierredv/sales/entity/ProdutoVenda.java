@@ -13,6 +13,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.modelmapper.ModelMapper;
+
+import br.com.pierredv.sales.vo.ProdutoVendaVO;
+
 @Entity
 @Table(name = "produto_venda")
 public class ProdutoVenda implements Serializable {
@@ -101,6 +105,10 @@ public class ProdutoVenda implements Serializable {
 			return false;
 		ProdutoVenda other = (ProdutoVenda) obj;
 		return Objects.equals(id, other.id);
+	}
+	
+	public static ProdutoVenda create(ProdutoVendaVO produtoVendaVO) {
+		return new ModelMapper().map(produtoVendaVO, ProdutoVenda.class);
 	}
 	
 }
