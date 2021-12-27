@@ -1,122 +1,110 @@
-package br.com.pierredv.sales.entity;
+package br.com.pierredv.sales.vo;
 
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import org.modelmapper.ModelMapper;
+import org.springframework.hateoas.RepresentationModel;
 
-import org.springframework.format.annotation.DateTimeFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
-@JsonPropertyOrder({"id", "data", "valorTotal","venda"})
-@Entity
-@Table(name = "venda")
-public class Venda implements Serializable {
+import br.com.pierredv.sales.entity.ProdutoVenda;
+import br.com.pierredv.sales.entity.Venda;
+
+@JsonPropertyOrder({"id", "data", "produtos", "valorTotal"})
+public class VendaVO extends RepresentationModel<VendaVO> implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@JsonProperty("id")
 	private Long id;
 	
-	@DateTimeFormat(pattern = "MM/dd/yyyy")
-	@Column(name = "data", nullable = false)
+	@JsonProperty("data")
 	private Date data;
 	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "venda", cascade = CascadeType.REFRESH )
+	@JsonProperty("produtos")
 	private List<ProdutoVenda> produtos;
 	
-	@Column(name = "valorTotal", nullable = false, length = 10)
+	@JsonProperty("valorTotal")
 	private Double valorTotal;
 	
-	
-	public Venda() {
+	public VendaVO() {
 		
 	}
-
-
-	public Venda(Long id, Date data, List<ProdutoVenda> produtos, Double valorTotal) {
+	
+	public VendaVO(Long id, Date data, List<ProdutoVenda> produtos, Double valorTotal) {
 		super();
 		this.id = id;
 		this.data = data;
 		this.produtos = produtos;
 		this.valorTotal = valorTotal;
 	}
-
-
+	
 	public Long getId() {
 		return id;
 	}
-
 
 	public void setId(Long id) {
 		this.id = id;
 	}
 
-
 	public Date getData() {
 		return data;
 	}
-
 
 	public void setData(Date data) {
 		this.data = data;
 	}
 
-
 	public List<ProdutoVenda> getProdutos() {
 		return produtos;
 	}
-
 
 	public void setProdutos(List<ProdutoVenda> produtos) {
 		this.produtos = produtos;
 	}
 
-
 	public Double getValorTotal() {
 		return valorTotal;
 	}
 
-
 	public void setValorTotal(Double valorTotal) {
 		this.valorTotal = valorTotal;
 	}
-
+	
 
 	@Override
 	public String toString() {
-		return "Venda [id=" + id + ", data=" + data + ", produtos=" + produtos + ", valorTotal=" + valorTotal + "]";
+		return "VendaVO [id=" + id + ", data=" + data + ", produtos=" + produtos + ", valorTotal=" + valorTotal + "]";
 	}
-
+	
+	
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id);
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + Objects.hash(id);
+		return result;
 	}
-
 
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
-		if (obj == null)
+		if (!super.equals(obj))
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Venda other = (Venda) obj;
+		VendaVO other = (VendaVO) obj;
 		return Objects.equals(id, other.id);
 	}
-	
+
+	public static VendaVO create(Venda venda) {
+		return new ModelMapper().map(venda, VendaVO.class);
+	}
 
 }
