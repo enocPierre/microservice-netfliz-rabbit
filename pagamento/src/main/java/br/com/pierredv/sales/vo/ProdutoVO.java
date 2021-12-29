@@ -18,7 +18,7 @@ public class ProdutoVO  extends RepresentationModel<ProdutoVO> implements Serial
 	@JsonProperty("id")
 	private Long id;
 	
-	@JsonProperty("id")
+	@JsonProperty("estoque")
 	private Integer estoque;
 	
 	public ProdutoVO() {

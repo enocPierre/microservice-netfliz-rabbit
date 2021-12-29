@@ -10,7 +10,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 import br.com.pierredv.sales.entity.ProdutoVenda;
 
-@JsonPropertyOrder({"id", "idProduto", "quantidade","venda" })
+@JsonPropertyOrder({"id", "idProduto", "quantidade" })
 public class ProdutoVendaVO extends RepresentationModel<ProdutoVendaVO> implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
@@ -18,10 +18,10 @@ public class ProdutoVendaVO extends RepresentationModel<ProdutoVendaVO> implemen
 	@JsonProperty("id")
 	private Long id;
 	
-	@JsonProperty("id")
+	@JsonProperty("idProduto")
 	private Long idProduto;
 	
-	@JsonProperty("id")
+	@JsonProperty("quantidade")
 	private Integer quantidade;
 
 	
