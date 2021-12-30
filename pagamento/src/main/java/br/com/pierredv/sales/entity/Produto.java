@@ -4,8 +4,14 @@ import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import org.modelmapper.ModelMapper;
+
+import br.com.pierredv.sales.vo.ProdutoVO;
 
 @Entity
 @Table(name = "produto")
@@ -63,6 +69,10 @@ public class Produto {
 			return false;
 		Produto other = (Produto) obj;
 		return Objects.equals(id, other.id);
+	}
+	
+	public static Produto create(ProdutoVO produtoVO) {
+		return new ModelMapper().map(produtoVO, Produto.class);
 	}
 	
 }

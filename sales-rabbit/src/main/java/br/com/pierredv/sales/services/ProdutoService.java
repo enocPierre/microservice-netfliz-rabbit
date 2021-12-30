@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import br.com.pierredv.sales.data.vo.ProdutoVO;
 import br.com.pierredv.sales.entity.Produto;
 import br.com.pierredv.sales.exception.ResourceNotFoundException;
+import br.com.pierredv.sales.message.ProdutoSendMessage;
 import br.com.pierredv.sales.repository.ProdutoRepository;
 
 
@@ -21,8 +22,12 @@ public class ProdutoService {
 	@Autowired
      private ProdutoRepository produtoRepository;
 	
+	@Autowired
+	private ProdutoSendMessage produtoSendMessage;
+	
 	public ProdutoVO create(ProdutoVO produtoVO) {
 		ProdutoVO produtoVoRetorno = ProdutoVO.create(produtoRepository.save(Produto.create(produtoVO)));
+		produtoSendMessage.sendMessage(produtoVoRetorno);
 		return produtoVoRetorno;
 	}
 	

@@ -20,3 +20,15 @@ spring:
     url: jdbc:mysql://localhost:3301/pagamento?allowPublicKeyRetrieval=true&sslMode=DISABLED&useSSL=false&serverTimezone=UTC
     username: root
     password: root
+    
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: admin
+    password: admin
+    
+sale:
+  rabbitmq:
+    exchange: sale.exchange
+    queue: sale.produto.queue
+
