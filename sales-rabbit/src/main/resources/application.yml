@@ -20,3 +20,8 @@ spring:
     url: jdbc:mysql://localhost:3301/sale?allowPublicKeyRetrieval=true&sslMode=DISABLED&useSSL=false&serverTimezone=UTC
     username: root
     password: root
+    
+sale: 
+  rabbitmq: 
+    exchange: sale.exchange
+    routingkey: sale.produto.routingkey
