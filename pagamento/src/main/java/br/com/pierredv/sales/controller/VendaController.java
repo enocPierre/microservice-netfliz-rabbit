@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.pierredv.sales.services.VendaService;
+import br.com.pierredv.sales.service.VendaService;
 import br.com.pierredv.sales.vo.VendaVO;
 
 @RestController

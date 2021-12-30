@@ -1,4 +1,5 @@
-package br.com.pierredv.sales.services;
+package br.com.pierredv.sales.service;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,7 +37,7 @@ public class VendaService {
 			produtosSalvos.add(produtoVendaRepository.save(pv));
 		});
 		
-		return vendaVO.create(venda);
+		return VendaVO.create(venda);
 	}
 	
 	public Page<VendaVO> findAll(Pageable pageable) {
@@ -69,5 +70,6 @@ public class VendaService {
 				.orElseThrow(() -> new ResourceNotFoundException("No records found for this ID"));
 		vendaRepository.delete(entity);
 	}
+
 
 }
