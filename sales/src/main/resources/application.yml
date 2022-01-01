@@ -20,3 +20,10 @@ spring:
     url: jdbc:mysql://localhost:3301/auth?allowPublicKeyRetrieval=true&sslMode=DISABLED&useSSL=false&serverTimezone=UTC
     username: root
     password: root
+    
+security:
+  jwt:
+    token:
+      secret-key: chave_microservices
+      expire-length: 36000
+      
