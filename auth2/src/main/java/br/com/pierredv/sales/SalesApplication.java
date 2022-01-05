@@ -1,4 +1,4 @@
-package br.com.pierredv.auth;
+package br.com.pierredv.sales;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

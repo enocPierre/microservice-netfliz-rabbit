@@ -58,8 +58,9 @@ public class User implements UserDetails, Serializable {
 		
 	}
 
+
 	public User(Long id, String userName, String password, Boolean isAccountNonExpired, Boolean isAccountNonLocked,
-			Boolean isCredentialsNonExpired, Boolean isEnabled) {
+			Boolean isCredentialsNonExpired, Boolean isEnabled, List<Permission> permissions) {
 		super();
 		this.id = id;
 		this.userName = userName;
@@ -68,7 +69,9 @@ public class User implements UserDetails, Serializable {
 		this.isAccountNonLocked = isAccountNonLocked;
 		this.isCredentialsNonExpired = isCredentialsNonExpired;
 		this.isEnabled = isEnabled;
+		this.permissions = permissions;
 	}
+
 
 	public Long getId() {
 		return id;
@@ -131,6 +134,16 @@ public class User implements UserDetails, Serializable {
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
+	}
+	
+	
+	public void setPermissions(List<Permission> permissions) {
+		this.permissions = permissions;
+	}
+
+
+	public List<Permission> getPermissions() {
+		return permissions;
 	}
 
 	@Override

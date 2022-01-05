@@ -18,14 +18,10 @@ public class JwtTokenFilter extends GenericFilterBean {
 	@Autowired
 	private JwtTokenProvider jwtTokenProvider;
 
-	
-	
 	public JwtTokenFilter(JwtTokenProvider jwtTokenProvider) {
 		super();
 		this.jwtTokenProvider = jwtTokenProvider;
 	}
-
-
 
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)

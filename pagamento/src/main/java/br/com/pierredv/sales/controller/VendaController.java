@@ -72,7 +72,6 @@ public class VendaController {
 		VendaVO proVo = vendaService.create(produtoVO);
 		proVo.add(linkTo(methodOn(VendaController.class).findById(proVo.getId())).withSelfRel());
 		return proVo;
-		
 	}
 	
 	@PutMapping(produces = {"application/json", "application/xml", "application/x-yaml"},
